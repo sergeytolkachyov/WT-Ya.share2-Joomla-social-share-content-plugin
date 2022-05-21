@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.10" type="plugin" group="content" method="upgrade">
+	<name>PLG_WT_YA_SHARE2</name>
+	<author>Sergey Tolkachyov</author>
+	<creationDate>21.05.2022</creationDate>
+	<copyright>Copyright (C) Sergey Tolkachyov. All rights reserved.</copyright>
+	<license>GNU General Public License version 3</license>
+	<authorEmail>info@web-tolk.ru</authorEmail>
+	<authorUrl>https://web-tolk.ru</authorUrl>
+	<version>1.0.0</version>
+	<description>PLG_WT_YA_SHARE2_DESC</description>
+	<scriptfile>script.php</scriptfile>
+	<files>
+		<folder>fields</folder>
+		<folder>language</folder>
+		<folder>tmpl</folder>
+		<filename plugin="wt_ya_share2">wt_ya_share2.php</filename>
+	</files>
+	<languages folder="language" client="administrator">
+		<language tag="en-GB">en-GB/en-GB.plg_content_wt_ya_share2.ini</language>
+		<language tag="ru-RU">ru-RU/ru-RU.plg_content_wt_ya_share2.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_content_wt_ya_share2.sys.ini</language>
+		<language tag="ru-RU">ru-RU/ru-RU.plg_content_wt_ya_share2.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field addfieldpath="plugins/content/wt_ya_share2/fields" type="plugininfo" name="plugininfo"/>
+				<field type="radio" name="old_browsers_support" label="PLG_WT_YA_SHARE2_OLD_BROWSERS_SUPPORT_LABEL" description="PLG_WT_YA_SHARE2_OLD_BROWSERS_SUPPORT_DESC" class="btn-group btn-group-yesno" default="0">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field type="list" name="socials" label="PLG_WT_YA_SHARE2_SOCIALS" multiple="true" layout="joomla.form.field.list-fancy-select">
+					<option value="messenger">PLG_WT_YA_SHARE2_SOCIALS_YANDEX</option>
+					<option value="vkontakte">PLG_WT_YA_SHARE2_SOCIALS_VKONTAKTE</option>
+					<option value="facebook">PLG_WT_YA_SHARE2_SOCIALS_FACEBOOK</option>
+					<option value="odnoklassniki">PLG_WT_YA_SHARE2_SOCIALS_ODNOKLASSNIKI</option>
+					<option value="telegram">PLG_WT_YA_SHARE2_SOCIALS_TELEGRAM</option>
+					<option value="twitter">PLG_WT_YA_SHARE2_SOCIALS_TWITTER</option>
+					<option value="viber">PLG_WT_YA_SHARE2_SOCIALS_VIBER</option>
+					<option value="whatsapp">PLG_WT_YA_SHARE2_SOCIALS_WHATSAPP</option>
+					<option value="moimir">PLG_WT_YA_SHARE2_SOCIALS_MOI_MIR</option>
+					<option value="pinterest">PLG_WT_YA_SHARE2_SOCIALS_PINTEREST</option>
+					<option value="skype">PLG_WT_YA_SHARE2_SOCIALS_SKYPE</option>
+					<option value="evernote">PLG_WT_YA_SHARE2_SOCIALS_EVERNOTE</option>
+					<option value="linkedin">PLG_WT_YA_SHARE2_SOCIALS_LINKEDIN</option>
+					<option value="lj">PLG_WT_YA_SHARE2_SOCIALS_LIVEJOURNAL</option>
+					<option value="blogger">PLG_WT_YA_SHARE2_SOCIALS_BLOGGER</option>
+					<option value="delicious">PLG_WT_YA_SHARE2_SOCIALS_DELICIOUS</option>
+					<option value="digg">PLG_WT_YA_SHARE2_SOCIALS_DIGG</option>
+					<option value="reddit">PLG_WT_YA_SHARE2_SOCIALS_REDDIT</option>
+					<option value="pocket">PLG_WT_YA_SHARE2_SOCIALS_POCKET</option>
+					<option value="qzone">PLG_WT_YA_SHARE2_SOCIALS_QZONE</option>
+					<option value="renren">PLG_WT_YA_SHARE2_SOCIALS_RENREN</option>
+					<option value="sinaWeibo">PLG_WT_YA_SHARE2_SOCIALS_SINA_WEIBO</option>
+					<option value="surfingbird">PLG_WT_YA_SHARE2_SOCIALS_SURFINGBIRD</option>
+					<option value="tencentWeibo">PLG_WT_YA_SHARE2_SOCIALS_TENCENT_WEIBO</option>
+				</field>
+				<field type="media" label="PLG_WT_YA_SHARE2_PINTEREST_IMAGE" name="pinterest_image" showon="socials:pinterest"/>
+				<field type="radio" label="PLG_WT_YA_SHARE2_PINTEREST_STYLE" name="color-scheme" class="btn-group" default="classic">
+					<option value="classic">PLG_WT_YA_SHARE2_CLASSIC</option>
+					<option value="whiteblack">PLG_WT_YA_SHARE2_WHITEBLACK</option>
+					<option value="blackwhite">PLG_WT_YA_SHARE2_BLACKWHITE</option>
+				</field>
+				<field type="radio" label="PLG_WT_YA_SHARE2_SIZE" name="size" class="btn-group" default="s">
+					<option value="s">S</option>
+					<option value="m">M</option>
+					<option value="l">L</option>
+				</field>
+				<field type="radio" label="PLG_WT_YA_SHARE2_SHAPE" name="shape" class="btn-group" default="normal">
+					<option value="normal">PLG_WT_YA_SHARE2_NORMAL</option>
+					<option value="round">PLG_WT_YA_SHARE2_ROUND</option>
+				</field>
+				<field type="text" name="limit" label="PLG_WT_YA_SHARE2_LIMIT_LABEL" description="PLG_WT_YA_SHARE2_LIMIT_DESC" filter="integer" default="3"/>
+				<field type="number" label="PLG_WT_YA_SHARE2_ARTICLE_INTRO_TEXT_MAX_CHARS_LABEL" description="PLG_WT_YA_SHARE2_ARTICLE_INTRO_TEXT_MAX_CHARS_DESC" name="article_intro_text_max_chars" default="100"/>
+				<field type="category"
+					   name="category_exclude"
+					   extension="com_content"
+					   label="PLG_WT_YA_SHARE2_CATEGORY_EXCLUDE"
+					   multiple="true"/>
+				<field type="list" name="button_share_category_position" default="before_display_content" label="PLG_WT_YA_SHARE2_POSITION_CATEGORY">
+					<option value="before_display_content">PLG_WT_YA_SHARE2_POSITION_BEFORE_DISPLAY_CONTENT</option>
+					<option value="after_display_title">PLG_WT_YA_SHARE2_POSITION_AFTER_DISPLAY_TITLE</option>
+					<option value="after_display_content">PLG_WT_YA_SHARE2_POSITION_AFTER_DISPLAY_CONTENT</option>
+				</field>
+				<field type="list" name="button_share_article_position" default="before_display_content" label="PLG_WT_YA_SHARE2_POSITION_ARTICLE">
+					<option value="before_display_content">PLG_WT_YA_SHARE2_POSITION_BEFORE_DISPLAY_CONTENT</option>
+					<option value="after_display_title">PLG_WT_YA_SHARE2_POSITION_AFTER_DISPLAY_TITLE</option>
+					<option value="after_display_content">PLG_WT_YA_SHARE2_POSITION_AFTER_DISPLAY_CONTENT</option>
+				</field>
+
+				<field type="filelist" name="layout" label="PLG_WT_YA_SHARE2_LAYOUT" directory="plugins/content/wt_ya_share2/tmpl" stripext="true" hide_default="true" hide_none="true"/>
+			</fieldset>
+		</fields>
+	</config>
+	<updateservers>
+        <server type="extension" name="Web Tolk - WT Ya.share" priority="1">https://web-tolk.ru/component/swjprojects/jupdate.html?element=wt_ya_share2</server>
+    </updateservers>
+</extension>
