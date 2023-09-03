@@ -1,5 +1,15 @@
 <?php
-// No direct access to this file
+
+/**
+ * @package       Content - WT Ya.share2
+ * @author        Sergey Tolkachyov, info@web-tolk.ru, https://web-tolk.ru
+ * @copyright     Copyright (C) 2022 Sergey Tolkachyov. All rights reserved.
+ * @license       GNU General Public License version 3 or later
+ * @version       1.0.2
+ * @since         1.0.0
+ * @link          https://web-tolk.ru/en/dev/joomla-plugins/wt-ya-share2-social-share-joomla-plugin
+ */
+
 defined('_JEXEC') or die('Restricted access');
 use Joomla\CMS\Factory;
 use Joomla\CMS\Installer\Installer;

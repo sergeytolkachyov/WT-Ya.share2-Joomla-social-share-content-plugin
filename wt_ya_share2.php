@@ -1,11 +1,13 @@
 <?php
+
 /**
- * @package       WT Content Like
- * @author        Sergey Tolkachyov info@web-tolk.ru https://web-tolk.ru
+ * @package       Content - WT Ya.share2
+ * @author        Sergey Tolkachyov, info@web-tolk.ru, https://web-tolk.ru
  * @copyright     Copyright (C) 2022 Sergey Tolkachyov. All rights reserved.
  * @license       GNU General Public License version 3 or later
- * @version       1.0.0
- * @link          https://yandex.ru/dev/share/
+ * @version       1.0.2
+ * @since         1.0.0
+ * @link          https://web-tolk.ru/en/dev/joomla-plugins/wt-ya-share2-social-share-joomla-plugin
  */
 
 use Joomla\CMS\Factory;
@@ -46,14 +48,18 @@ class PlgContentWt_ya_share2 extends CMSPlugin
 		if ((new Version())->isCompatible('4.0') == true)
 		{
 			$view = Factory::getApplication()->getInput()->getString('view');
-		} else {
+		}
+		else
+		{
 			$view = Factory::getApplication()->input->getString('view');
 		}
-		if($view === 'article' && $this->params->get('button_share_article_position', 'before_display_content') == 'before_display_content'){
+		if ($view === 'article' && $this->params->get('button_share_article_position', 'before_display_content') == 'before_display_content')
+		{
 			return $this->showShareButton($context, $row, $params, $limitstart = 0);
 		}
 
-		if($view === 'category' && $this->params->get('button_share_category_position', 'before_display_content') == 'before_display_content'){
+		if ($view === 'category' && $this->params->get('button_share_category_position', 'before_display_content') == 'before_display_content')
+		{
 			return $this->showShareButton($context, $row, $params, $limitstart = 0);
 		}
 
@@ -76,14 +82,18 @@ class PlgContentWt_ya_share2 extends CMSPlugin
 		if ((new Version())->isCompatible('4.0') == true)
 		{
 			$view = Factory::getApplication()->getInput()->getString('view');
-		} else {
+		}
+		else
+		{
 			$view = Factory::getApplication()->input->getString('view');
 		}
-		if($view === 'article' && $this->params->get('button_share_article_position', 'before_display_content') == 'after_display_content'){
+		if ($view === 'article' && $this->params->get('button_share_article_position', 'before_display_content') == 'after_display_content')
+		{
 			return $this->showShareButton($context, $row, $params, $limitstart = 0);
 		}
 
-		if($view === 'category' && $this->params->get('button_share_category_position', 'before_display_content') == 'after_display_content'){
+		if ($view === 'category' && $this->params->get('button_share_category_position', 'before_display_content') == 'after_display_content')
+		{
 			return $this->showShareButton($context, $row, $params, $limitstart = 0);
 		}
 	}
@@ -105,17 +115,21 @@ class PlgContentWt_ya_share2 extends CMSPlugin
 		if ((new Version())->isCompatible('4.0') == true)
 		{
 			$view = Factory::getApplication()->getInput()->getString('view');
-		} else {
+		}
+		else
+		{
 			$view = Factory::getApplication()->input->getString('view');
 		}
 
-		 if($view === 'article' && $this->params->get('button_share_article_position', 'before_display_content') == 'after_display_title'){
-			 return $this->showShareButton($context, $row, $params, $limitstart = 0);
-		 }
+		if ($view === 'article' && $this->params->get('button_share_article_position', 'before_display_content') == 'after_display_title')
+		{
+			return $this->showShareButton($context, $row, $params, $limitstart = 0);
+		}
 
-		 if($view === 'category' && $this->params->get('button_share_category_position', 'before_display_content') == 'after_display_title'){
-			 return $this->showShareButton($context, $row, $params, $limitstart = 0);
-		 }
+		if ($view === 'category' && $this->params->get('button_share_category_position', 'before_display_content') == 'after_display_title')
+		{
+			return $this->showShareButton($context, $row, $params, $limitstart = 0);
+		}
 	}
 
 	public function showShareButton($context, &$row, &$params, $limitstart = 0)
@@ -172,12 +186,11 @@ class PlgContentWt_ya_share2 extends CMSPlugin
 			}
 
 
-
 			if ($context !== 'com_content.categories')
 			{
 
-				$layoutId = $this->params->get('layout', 'default');
-				$layout   = new FileLayout($layoutId, JPATH_SITE . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'content' . DIRECTORY_SEPARATOR . 'wt_ya_share2' . DIRECTORY_SEPARATOR . 'tmpl');
+				$layoutId    = $this->params->get('layout', 'default');
+				$layout      = new FileLayout($layoutId, JPATH_SITE . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . 'content' . DIRECTORY_SEPARATOR . 'wt_ya_share2' . DIRECTORY_SEPARATOR . 'tmpl');
 				$curent_lang = Factory::getLanguage()->getLocale();
 
 				//Article intro text
@@ -199,22 +212,31 @@ class PlgContentWt_ya_share2 extends CMSPlugin
 				{
 					$article_intro_text = '';
 				}
+				if (!empty($this->params->get('socials')))
+				{
+					$displayData = [
+						'color-scheme'    => $this->params->get('color-scheme', 'classic'),
+						'socials'         => implode(',', $this->params->get('socials')),
+						'limit'           => $this->params->get('limit', 3),
+						'size'            => $this->params->get('size', 's'),
+						'lang'            => isset($curent_lang[8]) ? $curent_lang[8] : '',
+						'shape'           => $this->params->get('shape', 'normal'),
+						'pinterest_image' => $this->params->get('pinterest_image'),
+						'url'             => Route::_('index.php?option=com_content&view=article&id=' . $row->id . '&catid=' . $row->catid, '', '', 1),
+						'title'           => $row->title,
+						'description'     => $article_intro_text,
+						'id'              => $row->id,
+					];
+				}
+				else
+				{
+					$displayData = [];
+				}
 
-				$displayData = [
-					'color-scheme' => $this->params->get('color-scheme','classic'),
-					'socials' => implode(',',$this->params->get('socials')),
-					'limit' => $this->params->get('limit',3),
-					'size' => $this->params->get('size','s'),
-					'lang' => isset($curent_lang[8]) ? $curent_lang[8] : '',
-					'shape' =>  $this->params->get('shape','normal'),
-					'pinterest_image' =>  $this->params->get('pinterest_image'),
-					'url' =>  Route::_('index.php?option=com_content&view=article&id=' . $row->id . '&catid=' . $row->catid,'','',1),
-					'title' =>  $row->title,
-					'description' =>  $article_intro_text,
-				];
 
-			return $layout->render($displayData);
+				return $layout->render($displayData);
 			}
+
 			return false;
 
 		}

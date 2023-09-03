@@ -1,11 +1,13 @@
 <?php
+
 /**
- * @package     WebTolk plugin info field
- * @version     1.0.0
- * @Author 		Sergey Tolkachyov, https://web-tolk.ru
- * @copyright   Copyright (C) 2020 Sergey Tolkachyov
- * @license    GNU General Public License version 3 or later
- * @since 		1.0.0
+ * @package       Content - WT Ya.share2
+ * @author        Sergey Tolkachyov, info@web-tolk.ru, https://web-tolk.ru
+ * @copyright     Copyright (C) 2022 Sergey Tolkachyov. All rights reserved.
+ * @license       GNU General Public License version 3 or later
+ * @version       1.0.2
+ * @since         1.0.0
+ * @link          https://web-tolk.ru/en/dev/joomla-plugins/wt-ya-share2-social-share-joomla-plugin
  */
 
 defined('_JEXEC') or die;

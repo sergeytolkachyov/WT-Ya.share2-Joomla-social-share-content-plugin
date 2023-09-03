@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.10" type="plugin" group="content" method="upgrade">
+<extension type="plugin" group="content" method="upgrade">
 	<name>PLG_WT_YA_SHARE2</name>
 	<author>Sergey Tolkachyov</author>
-	<creationDate>21.05.2022</creationDate>
+	<creationDate>September 2023</creationDate>
 	<copyright>Copyright (C) Sergey Tolkachyov. All rights reserved.</copyright>
 	<license>GNU General Public License version 3</license>
 	<authorEmail>info@web-tolk.ru</authorEmail>
 	<authorUrl>https://web-tolk.ru</authorUrl>
-	<version>1.0.0</version>
+	<version>1.0.2</version>
 	<description>PLG_WT_YA_SHARE2_DESC</description>
 	<scriptfile>script.php</scriptfile>
 	<files>
