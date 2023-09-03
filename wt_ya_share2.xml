@@ -96,4 +96,5 @@
 	<updateservers>
         <server type="extension" name="Web Tolk - WT Ya.share" priority="1">https://web-tolk.ru/component/swjprojects/jupdate.html?element=wt_ya_share2</server>
     </updateservers>
+	<changelogurl>https://web-tolk.ru/jchangelog?element=wt_ya_share2</changelogurl>
 </extension>
