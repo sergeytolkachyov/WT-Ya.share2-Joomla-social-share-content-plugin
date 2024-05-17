@@ -58,7 +58,7 @@ return new class () implements ServiceProviderInterface {
 			 *
 			 * @since  1.0.0
 			 */
-			protected string $minimumJoomla = '4.3';
+			protected string $minimumJoomla = '5.0';
 
 			/**
 			 * Minimum PHP version required to install the extension.
@@ -67,7 +67,7 @@ return new class () implements ServiceProviderInterface {
 			 *
 			 * @since  1.0.0
 			 */
-			protected string $minimumPhp = '7.4';
+			protected string $minimumPhp = '8.1';
 
 			/**
 			 * Constructor.
@@ -139,6 +139,12 @@ return new class () implements ServiceProviderInterface {
 			 */
 			public function preflight(string $type, InstallerAdapter $adapter): bool
 			{
+				// Check compatible
+				if (!$this->checkCompatible('PLG_'.$adapter->getElement()))
+				{
+					return false;
+				}
+
 				return true;
 			}
 
@@ -189,6 +195,44 @@ return new class () implements ServiceProviderInterface {
 				</div>
 				';
 				$this->app->enqueueMessage($html, 'info');
+
+				return true;
+
+			}
+
+			/**
+			 * Method to check compatible.
+			 *
+			 * @throws  Exception
+			 *
+			 * @return  boolean True on success, False on failure.
+			 *
+			 * @since  1.0.0
+			 */
+			protected function checkCompatible(string $element): bool
+			{
+				$element = strtoupper($element);
+				// Check joomla version
+				if (!(new Version)->isCompatible($this->minimumJoomla))
+				{
+					$this->app->enqueueMessage(
+						Text::sprintf($element.'_ERROR_COMPATIBLE_JOOMLA', $this->minimumJoomla),
+						'error'
+					);
+
+					return false;
+				}
+
+				// Check PHP
+				if (!(version_compare(PHP_VERSION, $this->minimumPhp) >= 0))
+				{
+					$this->app->enqueueMessage(
+						Text::sprintf($element.'_ERROR_COMPATIBLE_PHP', $this->minimumPhp),
+						'error'
+					);
+
+					return false;
+				}
 
 				return true;
 			}
