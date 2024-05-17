@@ -64,7 +64,7 @@ final class Wt_ya_share2 extends CMSPlugin implements SubscriberInterface
 		if (
 			($view === 'article' && $this->params->get('button_share_article_position', 'before_display_content') == 'before_display_content')
 			||
-			($view === 'category' && $this->params->get('button_share_category_position', 'before_display_content') == 'before_display_content')
+			(($view === 'category' || $view === 'featured') && $this->params->get('button_share_category_position', 'before_display_content') == 'before_display_content')
 		)
 		{
 			$event->addResult($this->showShareButton($event->getContext(), $event->getItem(), $event->getParams(), $event->getPage()));
@@ -88,7 +88,7 @@ final class Wt_ya_share2 extends CMSPlugin implements SubscriberInterface
 		if (
 			($view === 'article' && $this->params->get('button_share_article_position', 'before_display_content') == 'after_display_content')
 			||
-			($view === 'category' && $this->params->get('button_share_category_position', 'before_display_content') == 'after_display_content')
+			(($view === 'category' || $view === 'featured') && $this->params->get('button_share_category_position', 'before_display_content') == 'after_display_content')
 		)
 		{
 			$event->addResult($this->showShareButton($event->getContext(), $event->getItem(), $event->getParams(), $event->getPage()));
@@ -108,7 +108,7 @@ final class Wt_ya_share2 extends CMSPlugin implements SubscriberInterface
 		if (
 			($view === 'article' && $this->params->get('button_share_article_position', 'before_display_content') == 'after_display_title')
 			||
-			($view === 'category' && $this->params->get('button_share_category_position', 'before_display_content') == 'after_display_title')
+			(($view === 'category' || $view === 'featured') && $this->params->get('button_share_category_position', 'before_display_content') == 'after_display_title')
 		)
 		{
 			$event->addResult($this->showShareButton($event->getContext(), $event->getItem(), $event->getParams(), $event->getPage()));
